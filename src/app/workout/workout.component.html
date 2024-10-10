@@ -1,0 +1,14 @@
+<ActionBar [title]="'Week ' + week + ', Day ' + day"></ActionBar>
+
+<StackLayout>
+  <Label [text]="currentInterval.type" [class]="'h2 text-center m-t-20 ' + (currentInterval.type.toLowerCase().includes('warm up') ? 'warm-up' : '')"></Label>
+  <Label [text]="formatTime(timeRemaining)" class="timer text-center m-t-10"></Label>
+  <Button [text]="isRunning ? 'Pause' : 'Start'" (tap)="toggleWorkout()" class="btn btn-primary m-t-20"></Button>
+  <ListView [items]="intervals" class="list-group m-t-20">
+    <ng-template let-interval="item" let-i="index">
+      <StackLayout [class]="'list-group-item ' + (interval.type.toLowerCase().includes('warm up') ? 'warm-up' : '') + (i === currentIntervalIndex ? ' active' : '')" (tap)="selectInterval(i)">
+        <Label [text]="interval.type + ' - ' + formatTime(interval.duration)" class="text-center"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>

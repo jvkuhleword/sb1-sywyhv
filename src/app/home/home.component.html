@@ -1,0 +1,12 @@
+<ActionBar title="Couch to 5K"></ActionBar>
+
+<StackLayout>
+  <Label text="Select a Week" class="h2 text-center m-t-20"></Label>
+  <ListView [items]="weeks" class="list-group">
+    <ng-template let-week="item">
+      <StackLayout class="list-group-item" (tap)="onWeekTap(week)">
+        <Label [text]="'Week ' + week" class="h3 text-center"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>
